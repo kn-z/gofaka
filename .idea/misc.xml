@@ -9,10 +9,6 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="101" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="254" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
@@ -29,12 +25,16 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/Arcitle.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
+          <option name="caretOffset" value="880" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/db.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
           <option name="caretOffset" value="161" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/config/config.ini" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="349" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/db.go" />
+          <option name="caretOffset" value="101" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
         </OpenedFileInfo>
       </list>
     </option>
