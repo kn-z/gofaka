@@ -1,0 +1,34 @@
+package errmsg
+
+const (
+	SUCCESS = 200
+	ERROR   = 500
+
+	//code = 1000... 用户模块错误
+	ERROR_USERNAME_USED      = 1001
+	ERROR_PASSWORD_WORNG     = 1002
+	ERROR_USER_NOT_EXIST     = 1003
+	ERROR_TOkEN_NOT_EXIST    = 1004
+	ERROR_TOKEN_RUNTIME      = 1005
+	ERROR_TOKEN_WRONG        = 1006
+	ERROR_TOKEN_FORMAT_WORNG = 1007
+	//code = 2000...
+
+	//code = 3000...
+)
+
+var codemsg = map[int]string{
+	SUCCESS:                  "SUCCESS",
+	ERROR:                    "FAIL",
+	ERROR_USERNAME_USED:      "ERROR_USERNAME_USED",
+	ERROR_PASSWORD_WORNG:     "ERROR_PASSWORD_WORNG",
+	ERROR_USER_NOT_EXIST:     "ERROR_USER_NOT_EXIST",
+	ERROR_TOkEN_NOT_EXIST:    "ERROR_TOkEN_NOT_EXIST",
+	ERROR_TOKEN_RUNTIME:      "ERROR_TOKEN_RUNTIME",
+	ERROR_TOKEN_WRONG:        "ERROR_TOKEN_WRONG",
+	ERROR_TOKEN_FORMAT_WORNG: "ERROR_TOKEN_FORMAT_WORNG",
+}
+
+func GetErrMsg(code int) string {
+	return codemsg[code]
+}
