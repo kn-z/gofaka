@@ -14,10 +14,10 @@ func InitRouter() {
 	{
 		//user module routing interface
 		router.POST("user/add", v1.AddUser)
-		router.GET("users", v1.GetUserList)
+		router.GET("users", v1.GetUsers)
 		router.PUT("user/:id", v1.EditUser)
 		router.DELETE("user/:id", v1.DeleteUser)
-		
+
 		//category module routing interfac
 
 		//article module routing interface

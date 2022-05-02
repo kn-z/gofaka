@@ -9,7 +9,7 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="109" />
+          <option name="caretOffset" value="112" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/db.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -25,11 +25,7 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="511" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="259" />
+          <option name="caretOffset" value="295" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -37,16 +33,20 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="27" />
           <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/gorm.io/gorm@v1.23.5/model.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="353" />
+          <option name="caretOffset" value="722" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="667" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
         </OpenedFileInfo>
       </list>
     </option>

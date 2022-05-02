@@ -29,3 +29,16 @@ func CreateUser(data *User) int {
 	}
 	return errmsg.SUCCESS
 }
+
+//get users list
+func GetUsers(pageSize int, pageNum int) []User {
+	var users []User
+	//Limit(x) Offset(y) skip y datas and read x datas || Limit(5) Offset((2-1)*5)
+	err = db.Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&users).Error
+	if err != nil && err != gorm.ErrRecordNotFound {
+		return nil
+	}
+	return users
+}
+
+//edit user
