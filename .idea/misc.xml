@@ -25,7 +25,7 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="369" />
+          <option name="caretOffset" value="511" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -41,7 +41,11 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="559" />
+          <option name="caretOffset" value="27" />
+          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/gorm.io/gorm@v1.23.5/model.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="353" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
         </OpenedFileInfo>
       </list>
