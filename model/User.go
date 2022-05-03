@@ -26,7 +26,7 @@ func CheckUser(name string) (code int) {
 
 //add user
 func CreateUser(data *User) int {
-	data.Password = ScryptPwd(data.Password)
+	//data.Password = ScryptPwd(data.Password)
 	err := db.Create(&data).Error
 	if err != nil {
 		return errmsg.ERROR
@@ -47,7 +47,21 @@ func GetUsers(pageSize int, pageNum int) []User {
 
 //edit user
 
+//delete user
+func DeleteUser(id int) int {
+	var user User
+	err = db.Where("id=?", id).Delete(&user).Error
+	if err != nil {
+		return errmsg.ERROR
+	}
+	return errmsg.SUCCESS
+}
+
 //passwd
+func (data *User) BeforeSave() {
+	data.Password = ScryptPwd(data.Password)
+}
+
 func ScryptPwd(password string) string {
 	const KeyLen = 10
 	salt := make([]byte, 8)
