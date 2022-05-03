@@ -1,8 +1,11 @@
 package model
 
 import (
+	"encoding/base64"
 	"gofaka/utils/errmsg"
+	"golang.org/x/crypto/scrypt"
 	"gorm.io/gorm"
+	"log"
 )
 
 type User struct {
@@ -23,6 +26,7 @@ func CheckUser(name string) (code int) {
 
 //add user
 func CreateUser(data *User) int {
+	data.Password = ScryptPwd(data.Password)
 	err := db.Create(&data).Error
 	if err != nil {
 		return errmsg.ERROR
@@ -42,3 +46,16 @@ func GetUsers(pageSize int, pageNum int) []User {
 }
 
 //edit user
+
+//passwd
+func ScryptPwd(password string) string {
+	const KeyLen = 10
+	salt := make([]byte, 8)
+	salt = []byte{12, 32, 4, 78, 45, 12, 36, 4}
+	HashPwd, err := scrypt.Key([]byte(password), salt, 16384, 8, 1, KeyLen)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fpw := base64.StdEncoding.EncodeToString(HashPwd)
+	return fpw
+}

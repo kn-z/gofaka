@@ -13,14 +13,6 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/db.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="31" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/category.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="10" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/login.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="62" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
         </OpenedFileInfo>
@@ -41,12 +33,24 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="667" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="0" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="8250" />
+          <option name="fileUrl" value="file:///usr/local/go/src/builtin/builtin.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="5212" />
+          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/golang.org/x/crypto@v0.0.0-20220427172511-eb4f295cb31f/scrypt/scrypt.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="10717" />
+          <option name="fileUrl" value="file:///usr/local/go/src/log/log.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1229" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
       </list>
     </option>
