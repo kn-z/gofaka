@@ -22,7 +22,7 @@ func InitRouter() {
 		router.POST("category/add", v1.AddCategory)
 		router.GET("category", v1.GetCategory)
 		router.PUT("category/:id", v1.EditCategory)
-		router.DELETE("user/:id", v1.DeleteCategory)
+		router.DELETE("category/:id", v1.DeleteCategory)
 
 		//article module routing interface
 	}

@@ -17,19 +17,11 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="5095" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="429" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Category.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="126" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="418" />
+          <option name="caretOffset" value="636" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -41,8 +33,12 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="697" />
+          <option name="caretOffset" value="293" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/category.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="515" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Category.go" />
         </OpenedFileInfo>
       </list>
     </option>

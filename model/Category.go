@@ -7,14 +7,14 @@ import (
 
 type Category struct {
 	ID   uint   `gorm:"primary_key;auto_increment" json:"id"`
-	Name string `gorm:"type:varchar(20);not null" json:"username"`
+	Name string `gorm:"type:varchar(20);not null" json:"name"`
 }
 
 func CheckCategory(name string) (code int) {
 	var category Category
-	db.Select("id").Where("id = ?", name).First(&category)
+	db.Select("id").Where("name = ?", name).First(&category)
 	if category.ID > 0 {
-		return errmsg.ERROR_CATENAME_USED //1001
+		return errmsg.ERROR_CATENAME_USED //2001
 	}
 	return errmsg.SUCCESS
 }
