@@ -9,47 +9,19 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="112" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/db.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="62" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="295" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="418" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="27" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/gorm.io/gorm@v1.23.5/model.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/README.md" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1083" />
+          <option name="caretOffset" value="1100" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="8250" />
-          <option name="fileUrl" value="file:///usr/local/go/src/builtin/builtin.go" />
+          <option name="caretOffset" value="5095" />
+          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="5212" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/golang.org/x/crypto@v0.0.0-20220427172511-eb4f295cb31f/scrypt/scrypt.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="10731" />
-          <option name="fileUrl" value="file:///usr/local/go/src/log/log.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="722" />
+          <option name="caretOffset" value="1161" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
         </OpenedFileInfo>
       </list>
