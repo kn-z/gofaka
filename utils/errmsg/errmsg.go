@@ -13,6 +13,7 @@ const (
 	ERROR_TOKEN_WRONG        = 1006
 	ERROR_TOKEN_FORMAT_WORNG = 1007
 	//code = 2000...
+	ERROR_CATENAME_USED = 2001
 
 	//code = 3000...
 )
@@ -27,6 +28,7 @@ var codemsg = map[int]string{
 	ERROR_TOKEN_RUNTIME:      "ERROR_TOKEN_RUNTIME",
 	ERROR_TOKEN_WRONG:        "ERROR_TOKEN_WRONG",
 	ERROR_TOKEN_FORMAT_WORNG: "ERROR_TOKEN_FORMAT_WORNG",
+	ERROR_CATENAME_USED:      "ERROR_CATENAME_USED",
 }
 
 func GetErrMsg(code int) string {

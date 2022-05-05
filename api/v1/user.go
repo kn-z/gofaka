@@ -10,11 +10,6 @@ import (
 
 var code int
 
-//query exist
-func UserExist(c *gin.Context) {
-	//
-}
-
 //add
 func AddUser(c *gin.Context) {
 	var data model.User
@@ -66,8 +61,7 @@ func EditUser(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
-		"message": errmsg.GetErrMsg(code),
-	})
+		"message": errmsg.GetErrMsg(code)})
 	//
 }
 

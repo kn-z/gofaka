@@ -51,7 +51,7 @@ func EditUser(id int, data *User) int {
 	var maps = make(map[string]interface{})
 	maps["username"] = data.Username
 	maps["role"] = data.Role
-	err := db.Model(user).Where("id=?", id).Updates(maps).Error
+	err := db.Model(&user).Where("id=?", id).Updates(maps).Error
 	if err != nil {
 		return errmsg.ERROR
 	}
