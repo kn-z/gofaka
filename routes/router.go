@@ -25,6 +25,10 @@ func InitRouter() {
 		router.DELETE("category/:id", v1.DeleteCategory)
 
 		//article module routing interface
+		router.POST("article/add", v1.AddArticle)
+		router.GET("article", v1.GetArticle)
+		router.PUT("article/:id", v1.EditArticle)
+		router.DELETE("article/:id", v1.DeleteArticle)
 	}
 
 	r.Run(utils.HttpPort)

@@ -9,20 +9,12 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/README.md" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="1158" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="126" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="636" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="0" />
@@ -33,12 +25,24 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="293" />
+          <option name="caretOffset" value="209" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Category.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="571" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Arcitle.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1115" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="463" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/category.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="515" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Category.go" />
+          <option name="caretOffset" value="636" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
       </list>
     </option>
