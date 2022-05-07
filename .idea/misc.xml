@@ -29,20 +29,20 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/Category.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="571" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Arcitle.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="1115" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="463" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/category.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="636" />
+          <option name="caretOffset" value="819" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="625" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Arcitle.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="852" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
         </OpenedFileInfo>
       </list>
     </option>

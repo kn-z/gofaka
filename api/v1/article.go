@@ -28,8 +28,8 @@ func GetArticle(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
 
-	data := model.GetArticle(pageSize, pageNum)
-	code = errmsg.SUCCESS
+	data, code := model.GetArticle(pageSize, pageNum)
+
 	c.JSON(http.StatusOK, gin.H{
 		"data":    data,
 		"message": errmsg.GetErrMsg(code),

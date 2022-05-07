@@ -27,14 +27,14 @@ func CreateArticle(data *Article) int {
 //todo get article in a category
 
 //get list
-func GetArticle(pageSize int, pageNum int) []Article {
+func GetArticle(pageSize int, pageNum int) ([]Article, int) {
 	var articles []Article
 	//Limit(x) Offset(y) skip y datas and read x datas || Limit(5) Offset((2-1)*5)
-	err = db.Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&articles).Error
+	err = db.Preload("Category").Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&articles).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
-		return nil
+		return nil, errmsg.ERROR
 	}
-	return articles
+	return articles, errmsg.SUCCESS
 }
 
 //edit user
