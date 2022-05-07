@@ -27,8 +27,11 @@ func InitRouter() {
 		//article module routing interface
 		router.POST("article/add", v1.AddArticle)
 		router.GET("article", v1.GetArticle)
+		router.GET("article/list/:cid", v1.GetCateArt)
+		router.GET("article/:id", v1.GetArtInfo)
 		router.PUT("article/:id", v1.EditArticle)
 		router.DELETE("article/:id", v1.DeleteArticle)
+
 	}
 
 	r.Run(utils.HttpPort)

@@ -22,6 +22,30 @@ func AddArticle(c *gin.Context) {
 }
 
 //query one
+func GetArtInfo(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	data, code := model.GetArtInfo(id)
+	c.JSON(http.StatusOK, gin.H{
+		"data":    data,
+		"message": errmsg.GetErrMsg(code),
+		"status":  code,
+	})
+}
+
+//query article in a category
+func GetCateArt(c *gin.Context) {
+	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
+	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
+	cid, _ := strconv.Atoi(c.Param("cid"))
+
+	data, code := model.GetCateArt(cid, pageSize, pageNum)
+
+	c.JSON(http.StatusOK, gin.H{
+		"data":    data,
+		"message": errmsg.GetErrMsg(code),
+		"status":  code,
+	})
+}
 
 //query list
 func GetArticle(c *gin.Context) {

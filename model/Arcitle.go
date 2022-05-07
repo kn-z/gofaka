@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"gofaka/utils/errmsg"
 	"gorm.io/gorm"
 )
@@ -37,7 +38,28 @@ func GetArticle(pageSize int, pageNum int) ([]Article, int) {
 	return articles, errmsg.SUCCESS
 }
 
-//edit user
+//get one
+func GetArtInfo(id int) (Article, int) {
+	var article Article
+	err := db.Preload("Category").Where("id = ?", id).First(&article).Error
+	if err != nil {
+		fmt.Println(err)
+		return article, errmsg.ERROR_ARTICLE_NOT_EXIST
+	}
+	return article, errmsg.SUCCESS
+}
+
+//query article in a category
+func GetCateArt(cid int, pageSize int, pageNum int) ([]Article, int) {
+	var articles []Article
+	err := db.Preload("Category").Limit(pageSize).Offset((pageNum-1)*pageSize).Where("cid=?", cid).Find(&articles).Error
+	if err != nil {
+		return nil, errmsg.ERROR_CATE_NOT_EXIST
+	}
+	return articles, errmsg.SUCCESS
+}
+
+//edit
 func EditArticle(id int, data *Article) int {
 	var article Article
 	var maps = make(map[string]interface{})
