@@ -84,3 +84,8 @@ func ScryptPwd(password string) string {
 	fpw := base64.StdEncoding.EncodeToString(HashPwd)
 	return fpw
 }
+
+//check login
+func CheckLogin(username string, password string) int {
+	var user *User
+}
