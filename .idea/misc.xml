@@ -13,44 +13,40 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/category.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="766" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="1274" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Arcitle.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="822" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="60" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/config/config.ini" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="200" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/dgrijalva/jwt-go@v3.2.0+incompatible/claims.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="5095" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="760" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="7318" />
-          <option name="fileUrl" value="file:///usr/local/go/src/strings/strings.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="232" />
+          <option name="caretOffset" value="1085" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/jwt.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
+          <option name="caretOffset" value="1956" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="693" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="357" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/login.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="416" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/utils/setting.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="238" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
       </list>
     </option>

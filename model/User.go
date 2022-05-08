@@ -87,5 +87,16 @@ func ScryptPwd(password string) string {
 
 //check login
 func CheckLogin(username string, password string) int {
-	var user *User
+	var user User
+	db.Where("username = ?", username).Find(&user)
+	if user.ID == 0 {
+		return errmsg.ERROR_USER_NOT_EXIST
+	}
+	if user.Password != ScryptPwd(user.Password) {
+		return errmsg.ERROR_PASSWORD_WORNG
+	}
+	if user.Role != 0 {
+		return errmsg.ERROR_USER_NO_RIGHT
+	}
+	return errmsg.SUCCESS
 }
