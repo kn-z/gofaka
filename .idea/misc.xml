@@ -17,15 +17,11 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/config/config.ini" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1085" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/jwt.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="1956" />
+          <option name="caretOffset" value="2137" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="693" />
+          <option name="caretOffset" value="54" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -37,7 +33,7 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="416" />
+          <option name="caretOffset" value="296" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -45,8 +41,12 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/utils/setting.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="238" />
+          <option name="caretOffset" value="895" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1085" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/jwt.go" />
         </OpenedFileInfo>
       </list>
     </option>

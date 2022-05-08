@@ -26,7 +26,7 @@ func CheckUser(name string) (code int) {
 
 //add user
 func CreateUser(data *User) int {
-	//data.Password = ScryptPwd(data.Password)
+	data.Password = ScryptPwd(data.Password)
 	err := db.Create(&data).Error
 	if err != nil {
 		return errmsg.ERROR
@@ -69,9 +69,9 @@ func DeleteUser(id int) int {
 }
 
 //passwd
-func (data *User) BeforeSave() {
-	data.Password = ScryptPwd(data.Password)
-}
+//func (data *User) BeforeSave() {
+//	data.Password = ScryptPwd(data.Password)
+//}
 
 func ScryptPwd(password string) string {
 	const KeyLen = 10
@@ -92,7 +92,7 @@ func CheckLogin(username string, password string) int {
 	if user.ID == 0 {
 		return errmsg.ERROR_USER_NOT_EXIST
 	}
-	if user.Password != ScryptPwd(user.Password) {
+	if user.Password != ScryptPwd(password) {
 		return errmsg.ERROR_PASSWORD_WORNG
 	}
 	if user.Role != 0 {

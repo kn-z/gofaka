@@ -15,7 +15,6 @@ func InitRouter() {
 	private.Use(middleware.JwtToken())
 	{
 		//user module routing interface
-		private.POST("user/add", v1.AddUser)
 		private.PUT("user/:id", v1.EditUser)
 		private.DELETE("user/:id", v1.DeleteUser)
 
@@ -33,11 +32,13 @@ func InitRouter() {
 
 	public := r.Group("api/v1")
 	{
+		public.POST("user/add", v1.AddUser)
 		public.GET("users", v1.GetUsers)
 		public.GET("category", v1.GetCategory)
 		public.GET("article", v1.GetArticle)
 		public.GET("article/list/:cid", v1.GetCateArt)
 		public.GET("article/:id", v1.GetArtInfo)
+		public.POST("login", v1.Login)
 	}
 
 	r.Run(utils.HttpPort)
