@@ -1,2 +1,2 @@
 # gofaka
-a faka web base on go
+a test project base on gin

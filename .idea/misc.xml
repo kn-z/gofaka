@@ -9,28 +9,12 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="10" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/category.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="60" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/config/config.ini" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="2137" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="54" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="357" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/login.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="296" />
@@ -41,12 +25,32 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/utils/setting.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="895" />
+          <option name="caretOffset" value="208" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/jwt.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="210" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/upload.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="328" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/article.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="767" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1085" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/jwt.go" />
+          <option name="caretOffset" value="60" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/config/config.ini" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="17736" />
+          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/README.md" />
         </OpenedFileInfo>
       </list>
     </option>

@@ -28,6 +28,16 @@ func InitRouter() {
 		private.PUT("article/:id", v1.EditArticle)
 		private.DELETE("article/:id", v1.DeleteArticle)
 
+		private.POST("upload", v1.UpLoad)
+		//private.POST("upload", func(c *gin.Context) {
+		//	file, err := c.FormFile("file")
+		//	if err != nil {
+		//		c.String(500, "上传文件出错")
+		//	}
+		//	c.SaveUploadedFile(file, file.Filename)
+		//	c.String(http.StatusOK, file.Filename+"上传成功")
+		//})
+
 	}
 
 	public := r.Group("api/v1")
