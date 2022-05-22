@@ -41,12 +41,16 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/log/20220522" />
         </OpenedFileInfo>
         <OpenedFileInfo>
+          <option name="caretOffset" value="3013" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/latest_log.log" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
           <option name="caretOffset" value="0" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/log/%Y%m%d" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/latest_log.log" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/README.md" />
         </OpenedFileInfo>
       </list>
     </option>
