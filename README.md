@@ -1,2 +1,2 @@
 # gofaka
-a test project base on gin
+A test project base on gin
