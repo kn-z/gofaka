@@ -39,8 +39,8 @@ func LoadData(cfg *ini.File) {
 	Db = cfg.Section("database").Key("Db").MustString("mysql")
 	DbHost = cfg.Section("database").Key("DbHost").MustString("127.0.0.1")
 	DbPort = cfg.Section("database").Key("DbPort").MustString("3306")
-	DbUser = cfg.Section("database").Key("DbUser").MustString("root")
-	DbPassword = cfg.Section("database").Key("DbPassword").MustString("root")
-	DbName = cfg.Section("database").Key("DbName").MustString("KNcloud")
+	DbUser = cfg.Section("database").Key("DbUser").MustString("kitnoob")
+	DbPassword = cfg.Section("database").Key("DbPassword").MustString("ZAd3F8FC7YKCSiZ7")
+	DbName = cfg.Section("database").Key("DbName").MustString("gofaka")
 
 }

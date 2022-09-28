@@ -9,7 +9,5 @@ func main() {
 
 	//database
 	model.InitDb()
-
 	routes.InitRouter()
-
 }

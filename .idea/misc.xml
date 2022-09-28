@@ -1,56 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="SwUserDefinedSpecifications">
-    <option name="specTypeByUrl">
-      <map />
-    </option>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="FLOW" />
   </component>
   <component name="UnattendedHostPersistenceState">
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="263" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/logger.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="5798" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/sirupsen/logrus@v1.8.1/entry.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="2503" />
-          <option name="fileUrl" value="file://$USER_HOME$/go/pkg/mod/github.com/sirupsen/logrus@v1.8.1/logrus.go" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/log/info.log" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/main.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/log/20220522.log" />
+          <option name="caretOffset" value="343" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/log/%Y%m%d.log" />
+          <option name="caretOffset" value="11263" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/../go/pkg/mod/gorm.io/gorm@v1.23.5/finisher_api.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="27" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/log/info.log20220522" />
+          <option name="caretOffset" value="5056" />
+          <option name="fileUrl" value="file:///usr/local/go/src/encoding/base64/base64.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/log/20220522" />
+          <option name="caretOffset" value="5203" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/../go/pkg/mod/golang.org/x/crypto@v0.0.0-20220722155217-630584e8d5aa/scrypt/scrypt.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="3013" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/latest_log.log" />
+          <option name="caretOffset" value="300" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Item.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/log/%Y%m%d" />
+          <option name="caretOffset" value="1236" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/README.md" />
+          <option name="caretOffset" value="305" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
         </OpenedFileInfo>
       </list>
     </option>

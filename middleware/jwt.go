@@ -14,15 +14,15 @@ var JwtKey = []byte(utils.JwtKey)
 var code int
 
 type MyClaims struct {
-	Username string "json:username"
+	Email string "json:email"
 	jwt.StandardClaims
 }
 
 //generate token
-func SetToken(username string) (string, int) {
+func SetToken(email string) (string, int) {
 	expireTime := time.Now().Add(10 * time.Hour)
 	SetClaims := MyClaims{
-		Username: username,
+		Email: email,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
 			Issuer:    "gofaka",
@@ -55,7 +55,7 @@ func JwtToken() gin.HandlerFunc {
 		tokenHeader := c.Request.Header.Get("Authorization")
 		code := errmsg.SUCCESS
 		if tokenHeader == "" {
-			code = errmsg.ERROR_TOkEN_NOT_EXIST
+			code = errmsg.ErrorTokenNotExist
 			c.JSON(http.StatusOK, gin.H{
 				"code":    code,
 				"message": errmsg.GetErrMsg(code),
@@ -65,7 +65,7 @@ func JwtToken() gin.HandlerFunc {
 		}
 		checkToken := strings.Split(tokenHeader, " ")
 		if len(checkToken) != 2 && checkToken[0] != "Bearer" {
-			code = errmsg.ERROR_TOKEN_WRONG
+			code = errmsg.ErrorTokenWrong
 			c.JSON(http.StatusOK, gin.H{
 				"code":    code,
 				"message": errmsg.GetErrMsg(code),
@@ -75,7 +75,7 @@ func JwtToken() gin.HandlerFunc {
 		}
 		key, tCode := CheckToken(checkToken[1])
 		if tCode == errmsg.ERROR {
-			code = errmsg.ERROR_TOKEN_WRONG
+			code = errmsg.ErrorTokenWrong
 			c.JSON(http.StatusOK, gin.H{
 				"code":    code,
 				"message": errmsg.GetErrMsg(code),
@@ -84,7 +84,7 @@ func JwtToken() gin.HandlerFunc {
 			return
 		}
 		if time.Now().Unix() > key.ExpiresAt {
-			code = errmsg.ERROR_TOKEN_RUNTIME
+			code = errmsg.ErrorTokenRuntime
 			c.JSON(http.StatusOK, gin.H{
 				"code":    code,
 				"message": errmsg.GetErrMsg(code),
@@ -93,7 +93,7 @@ func JwtToken() gin.HandlerFunc {
 			return
 		}
 
-		c.Set("username", key.Username)
+		c.Set("email", key.Email)
 		c.Next()
 	}
 }

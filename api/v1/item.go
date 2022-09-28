@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"gofaka/model"
 	"gofaka/utils/errmsg"
@@ -8,17 +9,11 @@ import (
 	"strconv"
 )
 
-var code int
-
-//add
-func AddUser(c *gin.Context) {
-	var data model.User
+func AddItem(c *gin.Context) {
+	var data model.Item
 	_ = c.ShouldBindJSON(&data)
-	code = model.CheckUser(data.Email)
-	if code == errmsg.SUCCESS {
-		model.CreateUser(&data)
-		//fmt.Println(data.Email)
-	}
+	code = model.CreateItem(&data)
+	fmt.Println(data.Price)
 	c.JSON(http.StatusOK, gin.H{
 		"data":    data,
 		"message": errmsg.GetErrMsg(code),
@@ -26,20 +21,11 @@ func AddUser(c *gin.Context) {
 	})
 }
 
-//query one
-
 //query list
-func GetUsers(c *gin.Context) {
+func GetItems(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
-
-	//if pageSize == 0 {
-	//	pageSize = -1
-	//}
-	//if pageNum == 0 {
-	//	pageNum = -1
-	//}
-	data := model.GetUsers(pageSize, pageNum)
+	data := model.GetItemList(pageSize, pageNum)
 	code = errmsg.SUCCESS
 	c.JSON(http.StatusOK, gin.H{
 		"data":    data,
@@ -49,17 +35,11 @@ func GetUsers(c *gin.Context) {
 }
 
 //edit
-func EditUser(c *gin.Context) {
-	var data model.User
+func EditItem(c *gin.Context) {
+	var data model.Item
 	id, _ := strconv.Atoi(c.Param("id"))
 	_ = c.ShouldBindJSON(&data)
-	code = model.CheckUser(data.Email)
-	if code == errmsg.SUCCESS {
-		model.EditUser(id, &data)
-	}
-	if code == errmsg.ERROR {
-		c.Abort()
-	}
+	code := model.EditItem(id, &data)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmsg.GetErrMsg(code)})
@@ -67,9 +47,9 @@ func EditUser(c *gin.Context) {
 }
 
 //delete
-func DeleteUser(c *gin.Context) {
+func DeleteItem(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	code = model.DeleteUser(id)
+	code = model.DeleteItem(id)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmsg.GetErrMsg(code),

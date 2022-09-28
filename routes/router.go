@@ -7,17 +7,19 @@ import (
 	"gofaka/utils"
 )
 
+//首字母大写public
 func InitRouter() {
 	gin.SetMode(utils.AppMode)
 	r := gin.New()
 	r.Use(middleware.Logger())
 	r.Use(gin.Recovery())
-	
+
 	private := r.Group("api/v1")
 	private.Use(middleware.JwtToken())
 	{
 		//user module routing interface
 		private.PUT("user/:id", v1.EditUser)
+		private.GET("users", v1.GetUsers)
 		private.DELETE("user/:id", v1.DeleteUser)
 
 		//category module routing interfac
@@ -29,6 +31,11 @@ func InitRouter() {
 		private.POST("article/add", v1.AddArticle)
 		private.PUT("article/:id", v1.EditArticle)
 		private.DELETE("article/:id", v1.DeleteArticle)
+
+		//item module routing interface
+		private.POST("item/add", v1.AddItem)
+		private.PUT("item/:id", v1.EditItem)
+		private.DELETE("item/:id", v1.DeleteItem)
 
 		private.POST("upload", v1.UpLoad)
 		//private.POST("upload", func(c *gin.Context) {
@@ -44,13 +51,18 @@ func InitRouter() {
 
 	public := r.Group("api/v1")
 	{
+		//user module routing interface
+		public.POST("login", v1.Login)
 		public.POST("user/add", v1.AddUser)
-		public.GET("users", v1.GetUsers)
+
+		//item module routing interface
+		public.GET("items", v1.GetItems)
+
 		public.GET("category", v1.GetCategory)
 		public.GET("article", v1.GetArticle)
 		public.GET("article/list/:cid", v1.GetCateArt)
 		public.GET("article/:id", v1.GetArtInfo)
-		public.POST("login", v1.Login)
+
 	}
 
 	r.Run(utils.HttpPort)

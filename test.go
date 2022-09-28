@@ -1,10 +1,13 @@
-package model
+package main
 
 import (
 	"fmt"
+	"gofaka/model"
 	"gofaka/utils/errmsg"
 	"gorm.io/gorm"
 )
+
+var db = model.GetDb()
 
 type Item struct {
 	gorm.Model
@@ -49,7 +52,7 @@ func EditItem(id int, data *Item) int {
 
 func DeleteItem(id int) int {
 	var item Item
-	fmt.Println(item.Price)
+	fmt.Println(&item.Price)
 	err := db.Where("id=?", id).Delete(&item).Error
 	if err != nil {
 		return errmsg.ERROR
