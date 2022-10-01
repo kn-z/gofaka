@@ -30,7 +30,7 @@ func InitDb() {
 	}
 
 	//自动d
-	err := db.AutoMigrate(&User{}, &Article{}, &Category{}, &Item{})
+	err := db.AutoMigrate(&User{}, &Category{}, &Item{}, &Order{})
 	if err != nil {
 		return
 	}

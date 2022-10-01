@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"gofaka/middleware"
 	"gofaka/model"
@@ -12,7 +13,7 @@ func Login(c *gin.Context) {
 	var data model.User
 	var token string
 
-	c.ShouldBindJSON(&data)
+	_ = c.ShouldBindJSON(&data)
 
 	code := model.CheckLogin(data.Email, data.Password)
 	if code == errmsg.SUCCESS {
@@ -23,5 +24,18 @@ func Login(c *gin.Context) {
 		"message": errmsg.GetErrMsg(code),
 		"status":  code,
 	})
+}
 
+func Pay(c *gin.Context) {
+	qrUrl, code := middleware.PayTradePreCreate(c)
+	c.JSON(http.StatusOK, gin.H{
+		"qrUrl":   qrUrl,
+		"message": errmsg.GetErrMsg(code),
+		"status":  code,
+	})
+}
+
+func Notify(c *gin.Context) {
+	code := middleware.PayNotifyVerify(c)
+	fmt.Println(code)
 }

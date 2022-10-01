@@ -51,6 +51,9 @@ func InitRouter() {
 
 	public := r.Group("api/v1")
 	{
+		public.POST("notify", v1.Notify)
+		public.POST("pay", v1.Pay)
+
 		//user module routing interface
 		public.POST("login", v1.Login)
 		public.POST("user/add", v1.AddUser)
