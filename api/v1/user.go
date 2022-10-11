@@ -75,3 +75,14 @@ func DeleteUser(c *gin.Context) {
 		"message": errmsg.GetErrMsg(code),
 	})
 }
+
+//send mail
+func SendEmail(c *gin.Context) {
+	var data model.User
+	_ = c.ShouldBindJSON(&data)
+	code := model.SendEmail(data.Email)
+	c.JSON(http.StatusOK, gin.H{
+		"status":  code,
+		"message": errmsg.GetErrMsg(code),
+	})
+}

@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/base64"
+	"gofaka/middleware"
 	"gofaka/utils/errmsg"
 	"golang.org/x/crypto/scrypt"
 	"gorm.io/gorm"
@@ -98,5 +99,12 @@ func CheckLogin(email string, password string) int {
 	if user.Role != 1 {
 		return errmsg.ErrorUserNoRight
 	}
+	return errmsg.SUCCESS
+}
+
+//send mail
+func SendEmail(email string) int {
+	To := []string{email}
+	middleware.SetMail(To)
 	return errmsg.SUCCESS
 }

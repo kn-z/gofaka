@@ -53,6 +53,7 @@ func InitRouter() {
 	{
 		public.POST("notify", v1.Notify)
 		public.POST("pay", v1.Pay)
+		public.POST("verify", v1.SendEmail)
 
 		//user module routing interface
 		public.POST("login", v1.Login)
@@ -65,8 +66,9 @@ func InitRouter() {
 		public.GET("article", v1.GetArticle)
 		public.GET("article/list/:cid", v1.GetCateArt)
 		public.GET("article/:id", v1.GetArtInfo)
-
 	}
 
-	r.Run(utils.HttpPort)
+	if err := r.Run(utils.HttpPort); err != nil {
+		panic(err)
+	}
 }

@@ -1,3 +1,0 @@
-time="2022-09-28 11:56:59" level=info Agent="ApiPOST Runtime +https://www.apipost.cn" DataSize=47 HostName=GreenCloud.1655868317 Ip=39.103.188.159 Method=GET Path="/api/v1/users?pagesize=5&pagenum=1" SpendTime="1 ms" status=200
-time="2022-09-28 11:57:07" level=info Agent="ApiPOST Runtime +https://www.apipost.cn" DataSize=210 HostName=GreenCloud.1655868317 Ip=39.103.188.159 Method=POST Path=/api/v1/login SpendTime="103 ms" status=200
-time="2022-09-28 11:57:22" level=info Agent="ApiPOST Runtime +https://www.apipost.cn" DataSize=897 HostName=GreenCloud.1655868317 Ip=39.103.188.159 Method=GET Path="/api/v1/users?pagesize=5&pagenum=1" SpendTime="5 ms" status=200
