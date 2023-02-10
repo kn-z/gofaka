@@ -26,6 +26,7 @@ var (
 	WebName    string
 	WebUrl     string
 	WebBpColor string
+	AdminPath  string
 )
 
 func Init() {
@@ -66,4 +67,5 @@ func LoadWebInfo(cfg *ini.File) {
 	WebName = cfg.Section("web").Key("WebName").MustString("KNcloud")
 	WebUrl = cfg.Section("web").Key("WebUrl").MustString("www.kncloud.app")
 	WebBpColor = cfg.Section("web").Key("WebBpColor").MustString("#35393e")
+	AdminPath = cfg.Section("web").Key("AdminPath").MustString("backend")
 }

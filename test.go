@@ -1,8 +1,7 @@
 package main
 
 import (
-	"html/template"
-	"os"
+	"fmt"
 )
 
 // mail template
@@ -79,7 +78,13 @@ import (
 //}
 
 func main() {
-	t, _ := template.New("demo").Parse(`{{define "t"}}hello, {{.username}}! main page: [{{.mainpage}}]{{end}}`)
-	args1 := map[string]string{"username": "hypermind", "mainpage": "http://hypermind.com.cn/go"}
-	_ = t.ExecuteTemplate(os.Stdout, "t", args1)
+	var list = []int{1, 2, 3, 4}
+	for _, i := range list {
+		i = 1
+		fmt.Println(i)
+		//fmt.Println(list[idx])
+		//list[idx] = 1
+
+	}
+	fmt.Println(list)
 }

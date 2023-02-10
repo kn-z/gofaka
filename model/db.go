@@ -28,8 +28,8 @@ func InitDb() {
 		log.Printf("Failed to connected database %s", err)
 	}
 
-	//自动d
-	err := db.AutoMigrate(&User{}, &Category{}, &Item{}, &Order{})
+	//自动qianyi
+	err := db.AutoMigrate(&User{}, &Goods{}, &Order{}, &Category{}, &Item{}, &Notice{})
 	if err != nil {
 		return
 	}

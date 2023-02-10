@@ -1,23 +1,36 @@
-package middleware
+package v1
 
 import (
+	"fmt"
 	"github.com/go-gomail/gomail"
 	"gofaka/utils"
+	"gofaka/utils/errmsg"
 	"log"
+	"math/rand"
 	"os"
 	"strings"
 	"time"
 )
 
+type VerificationCode struct {
+	code string
+	time int64
+}
+
 var ch = make(chan *gomail.Message)
+var UserMap = make(map[string]VerificationCode)
 
 func SetMail(To []string) {
-	m := gomail.NewMessage()
-	m.SetHeader("From", utils.WebName+"<"+utils.EmUser+">")
-	m.SetHeader("To", To...)
-	m.SetHeader("Subject", utils.WebName+"邮箱验证码")
-	m.SetBody("text/html", initBody())
-	ch <- m
+	for _, to := range To {
+		m := gomail.NewMessage()
+		m.SetHeader("From", utils.WebName+"<"+utils.EmUser+">")
+		m.SetHeader("To", to)
+		m.SetHeader("Subject", utils.WebName+"邮箱验证码")
+		timestamp := time.Now().Unix()
+		UserMap[to] = VerificationCode{code: fmt.Sprintf("%06v", rand.New(rand.NewSource(timestamp)).Intn(1000000)), time: timestamp}
+		m.SetBody("text/html", getBody(UserMap[to].code))
+		ch <- m
+	}
 }
 
 func SendMail() {
@@ -55,7 +68,7 @@ func SendMail() {
 	}
 }
 
-func initBody() string {
+func getBody(code string) string {
 	content, err := os.ReadFile("./utils/views/verify.html")
 	if err != nil {
 		log.Println("Failed to read verify.html", err)
@@ -63,9 +76,20 @@ func initBody() string {
 	}
 
 	body := string(content)
-	body = strings.Replace(body, "{{$code}}", "1234", -1)
+	body = strings.Replace(body, "{{$code}}", code, -1)
 	body = strings.Replace(body, "{{$name}}", utils.WebName, -1)
 	body = strings.Replace(body, "{{$url}}", utils.WebUrl, -1)
 	body = strings.Replace(body, "{{$background-color}}", utils.WebBpColor, -1)
 	return body
+}
+
+func CheckVerificationCode(email string, code string, second int64) int {
+	if UserMap[email].code != code || len(code) < 6 {
+		return errmsg.ErrorVerificationCodeError
+	}
+	if UserMap[email].time-time.Now().Unix() > second {
+		delete(UserMap, email)
+		return errmsg.ErrorVerificationCodeExpired
+	}
+	return errmsg.SUCCESS
 }

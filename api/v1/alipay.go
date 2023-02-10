@@ -1,12 +1,10 @@
-package middleware
+package v1
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-pay/gopay"
 	"github.com/go-pay/gopay/alipay"
 	"gofaka/utils/errmsg"
-	"time"
 )
 
 var (
@@ -17,15 +15,15 @@ var (
 	client, _    = alipay.NewClient(appId, privateKey, true) //isP is sandbox
 )
 
-func PayTradePreCreate(c *gin.Context) (string, int) {
+func PayTradePreCreate(c *gin.Context, OutTradeNo string, TotalAmount int) (string, int) {
 	bm := make(gopay.BodyMap)
 	bm.Set("subject", "宝支付测")
 	// out_trade_no is unique, an out_trade_no only be paid once
-
-	outTradeNo := time.Now().Format("20060102150405.999")
-	outTradeNo = outTradeNo[:14] + outTradeNo[15:]
-	bm.Set("out_trade_no", outTradeNo)
-	bm.Set("total_amount", "0.01")
+	//outTradeNo := time.Now().Format("20060102150405.999")
+	//outTradeNo = outTradeNo[:14] + outTradeNo[15:]
+	//outTradeNo = "20221017"
+	bm.Set("out_trade_no", OutTradeNo)
+	bm.Set("total_amount", float32(TotalAmount)/100)
 	bm.Set("notify_url", "http://hk.knyun.xyz:3000/api/v1/notify")
 
 	aliRsp, _ := client.TradePrecreate(c, bm)
@@ -33,12 +31,11 @@ func PayTradePreCreate(c *gin.Context) (string, int) {
 	return aliRsp.Response.QrCode, errmsg.SUCCESS
 }
 
-func PayNotifyVerify(c *gin.Context) int {
+func PayNotifyVerify(c *gin.Context) (gopay.BodyMap, int) {
 	notifyReq, _ := alipay.ParseNotifyToBodyMap(c.Request)
-	fmt.Println(notifyReq)
 	ok, _ := alipay.VerifySign(aliPublicKey, notifyReq)
 	if !ok {
-		return errmsg.ERROR
+		return notifyReq, errmsg.ERROR
 	}
-	return errmsg.SUCCESS
+	return notifyReq, errmsg.SUCCESS
 }

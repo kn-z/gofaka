@@ -2,7 +2,6 @@ package model
 
 import (
 	"encoding/base64"
-	"gofaka/middleware"
 	"gofaka/utils/errmsg"
 	"golang.org/x/crypto/scrypt"
 	"gorm.io/gorm"
@@ -11,22 +10,38 @@ import (
 
 type User struct {
 	gorm.Model
-	Email    string `gorm:"type:varchar(20);primaryKey;not null" json:"email"`
-	Password string `gorm:"type:varchar(20);not null" json:"password"`
+	Email    string `gorm:"type:varchar(64);primaryKey;not null" json:"email"`
+	Password string `gorm:"type:varchar(64);not null" json:"password"`
 	Role     int    `gorm:"type:int" json:"role"`
+	Content  string `gorm:"type:text" json:"content"`
 }
 
-func CheckUser(name string) (code int) {
-	var users User
-	db.Select("id").Where("email = ?", name).First(&users)
-	if users.ID > 0 {
-		return errmsg.ErrorEmailUsed //1001
+func CheckEmail(email string) (code int) {
+	var count int64
+	db.Where("email = ?", email).Find(&[]User{}).Count(&count)
+	if count > 0 {
+		return errmsg.ErrorEmailExist //1012
 	}
 	return errmsg.SUCCESS
 }
 
-//add user
+func CheckUser(user User) (code int) {
+	var count int64
+	db.Where("id <> ? AND email = ?", user.ID, user.Email).Find(&[]User{}).Count(&count)
+	if count > 0 {
+		return errmsg.ErrorEmailUsed //1012
+	}
+	return errmsg.SUCCESS
+}
+
+// add user
 func CreateUser(data *User) int {
+	if len(data.Password) < 8 && len(data.Password) > 0 {
+		return errmsg.ErrorPasswordLess8
+	}
+	if len(data.Password) == 0 {
+		data.Password = data.Email
+	}
 	data.Password = ScryptPwd(data.Password)
 	err := db.Create(&data).Error
 	if err != nil {
@@ -35,23 +50,62 @@ func CreateUser(data *User) int {
 	return errmsg.SUCCESS
 }
 
-//get users list
-func GetUsers(pageSize int, pageNum int) []User {
-	var users []User
-	//Limit(x) Offset(y) skip y datas and read x datas || Limit(5) Offset((2-1)*5)
-	err = db.Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&users).Error
-	if err != nil && err != gorm.ErrRecordNotFound {
-		return nil
+func GetUserByID(id int) (User, int) {
+	var user User
+	rows, err := db.Where("id=?", id).Find(&user).Rows()
+	if err == gorm.ErrRecordNotFound {
+		return user, errmsg.ErrorEmailNotExist
 	}
-	return users
+	if err != nil {
+		return user, errmsg.ERROR
+	}
+	if !rows.Next() {
+		return user, errmsg.ErrorUserNotExist
+	}
+	return user, errmsg.SUCCESS
 }
 
-//edit user
+func GetUser(email string) (User, int) {
+	var user User
+	err := db.Where("email=?", email).Find(&user).Error
+	if err == gorm.ErrRecordNotFound {
+		return user, errmsg.ErrorEmailNotExist
+	}
+	if err != nil {
+		return user, errmsg.ERROR
+	}
+	return user, errmsg.SUCCESS
+}
+
+// get users list
+func GetUsers(pageSize int, pageNum int, sortType string, sortKey string) ([]User, int) {
+	var users []User
+	var count int64
+	order := sortKey + " " + sortType
+	if sortType == "" || sortKey == "" {
+		order = "id desc"
+	}
+	//Limit(x) Offset(y) skip y datas and read x datas || Limit(5) Offset((2-1)*5)
+	err = db.Order(order).Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&users).Limit(-1).Offset(-1).Count(&count).Error
+	if err != nil && err != gorm.ErrRecordNotFound {
+		return nil, 0
+	}
+	return users, int(count)
+}
+
+// edit user
 func EditUser(id int, data *User) int {
 	var user User
 	var maps = make(map[string]interface{})
 	maps["email"] = data.Email
+	if len(data.Password) < 8 && len(data.Password) > 0 {
+		return errmsg.ErrorPasswordLess8
+	}
+	if len(data.Password) != 0 {
+		maps["password"] = ScryptPwd(data.Password)
+	}
 	maps["role"] = data.Role
+	maps["content"] = data.Content
 	err := db.Model(&user).Where("id=?", id).Updates(maps).Error
 	if err != nil {
 		return errmsg.ERROR
@@ -59,7 +113,7 @@ func EditUser(id int, data *User) int {
 	return errmsg.SUCCESS
 }
 
-//delete user
+// delete user
 func DeleteUser(id int) int {
 	var user User
 	err = db.Where("id=?", id).Delete(&user).Error
@@ -86,25 +140,15 @@ func ScryptPwd(password string) string {
 	return fpw
 }
 
-//check login
-func CheckLogin(email string, password string) int {
+// check login
+func CheckLogin(email string, password string) (int, int) {
 	var user User
 	db.Where("email = ?", email).Find(&user)
 	if user.ID == 0 {
-		return errmsg.ErrorEmailNotExist
+		return -1, errmsg.ErrorEmailNotExist
 	}
 	if user.Password != ScryptPwd(password) {
-		return errmsg.ErrorPasswordWrong
+		return -1, errmsg.ErrorPasswordWrong
 	}
-	if user.Role != 1 {
-		return errmsg.ErrorUserNoRight
-	}
-	return errmsg.SUCCESS
-}
-
-//send mail
-func SendEmail(email string) int {
-	To := []string{email}
-	middleware.SetMail(To)
-	return errmsg.SUCCESS
+	return user.Role, errmsg.SUCCESS
 }

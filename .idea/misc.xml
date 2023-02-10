@@ -7,44 +7,44 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="136" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/test.go" />
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/log/20221101" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="25889" />
-          <option name="fileUrl" value="file:///usr/local/go/src/net/url/url.go" />
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/logger.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="33533" />
-          <option name="fileUrl" value="file:///usr/local/go/src/time/time.go" />
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/login.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1208" />
-          <option name="fileUrl" value="file:///usr/local/go/src/pkg/mod/github.com/go-gomail/gomail@v0.0.0-20160411212932-81ebce5c23df/smtp.go" />
+          <option name="caretOffset" value="915" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/user.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="229" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/config/config.ini" />
+          <option name="caretOffset" value="1869" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/routes/router.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1920" />
-          <option name="fileUrl" value="file:///usr/local/go/src/strings/strings.go" />
+          <option name="caretOffset" value="2587" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/api/v1/order.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="323" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/utils/setting.go" />
+          <option name="caretOffset" value="6463" />
+          <option name="fileUrl" value="file:///usr/local/go/src/encoding/json/encode.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="8646" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/config/verifycode.html" />
+          <option name="caretOffset" value="2840" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/Order.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="19871" />
-          <option name="fileUrl" value="file:///usr/local/go/src/os/file.go" />
+          <option name="caretOffset" value="1042" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/model/User.go" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="242" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/middleware/mail.go" />
+          <option name="caretOffset" value="628" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/utils/errmsg/errmsg.go" />
         </OpenedFileInfo>
       </list>
     </option>

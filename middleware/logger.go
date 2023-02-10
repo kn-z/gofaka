@@ -13,7 +13,7 @@ import (
 
 func Logger() gin.HandlerFunc {
 	filePath := "log/%Y%m%d"
-	linkName := "latest_log.log"
+	linkName := "log/latest_log.log"
 	scr, err := os.OpenFile(filePath, os.O_RDWR|os.O_CREATE, 0755)
 	if err != nil {
 		fmt.Println("err:", err)
