@@ -86,15 +86,15 @@ func CheckGoodsStock(c *gin.Context) {
 }
 
 func SortGoods(c *gin.Context) {
-	sort, _ := strconv.Atoi(c.Param("sort"))
-	for data, _ := range sort {
-		code = model.UpdateSort(data.id, data.sort)
-		if code == errmsg.ERROR {
-			break
-		}
-	}
-	c.JSON(http.StatusOK, gin.H{
-		"status":  code,
-		"message": errmsg.GetErrMsg(code),
-	})
+// 	sort, _ := strconv.Atoi(c.Param("sort"))
+// 	for data, _ := range sort {
+// 		code = model.UpdateSort(data.id, data.sort)
+// 		if code == errmsg.ERROR {
+// 			break
+// 		}
+// 	}
+// 	c.JSON(http.StatusOK, gin.H{
+// 		"status":  code,
+// 		"message": errmsg.GetErrMsg(code),
+// 	})
 }
