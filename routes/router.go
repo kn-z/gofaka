@@ -22,7 +22,7 @@ func InitRouter() {
 		admin.PUT("user/:id", v1.EditUser)
 		admin.GET("user/:id", v1.GetUser)
 		admin.DELETE("user/:id", v1.DeleteUser)
-		admin.POST("user/create", v1.AddUserByAdmin)
+		admin.POST("user/add", v1.AddUserByAdmin)
 
 		//category module routing interface
 		admin.GET("category/all", v1.GetAllCategory)
@@ -37,6 +37,7 @@ func InitRouter() {
 		admin.PUT("good/:id", v1.EditGoods)
 		admin.DELETE("good/:id", v1.DeleteGoods)
 		admin.PUT("good/check", v1.CheckGoodsStock)
+		admin.PUT("goods/sort", v1.SortGoods)
 
 		//order module routing interface
 		admin.GET("order/all", v1.GetAllOrder)
@@ -47,12 +48,14 @@ func InitRouter() {
 		admin.PUT("item/:id", v1.EditItem)
 		admin.GET("item/:id", v1.GetItem)
 		admin.POST("item/add", v1.AddItem)
+		admin.POST("item/add/batch", v1.BatchAddItem)
 
 		//notice module routing interface
 		//admin.GET("notice/all", v1.GetItemList)
 		admin.GET("notice/all", v1.GetAllNotice)
 		admin.PUT("notice/:id", v1.EditNotice)
 		admin.POST("notice/add", v1.AddNotice)
+		admin.DELETE("notice/:id", v1.DeleteNotice)
 
 		admin.POST("upload", v1.UpLoad)
 		//user.POST("upload", func(c *gin.Context) {
@@ -73,7 +76,7 @@ func InitRouter() {
 		//user module routing interface
 		public.POST("login", v1.UserLogin)
 		public.POST("admin", v1.AdminLogin)
-		public.POST("user/add", v1.AddUser)
+		public.POST("user/create", v1.AddUser)
 		public.POST("user/info", v1.GetUserInfo)
 
 		//good module routing interface

@@ -18,6 +18,7 @@ const (
 	ErrorUserNotExist            = 1011
 	ErrorPasswordLess8           = 1012
 	ErrorEmailUsed               = 1013
+	ErrorUserBanned              = 1014
 
 	//code = 2000...
 	ErrorInsufficientStock = 2001
@@ -54,6 +55,7 @@ var codeMsg = map[int]string{
 	ErrorUserNotExist:            "ERROR_USER_NOT_EXIST",
 	ErrorPasswordLess8:           "ERROR_PASSWORD_LESS_8",
 	ErrorEmailUsed:               "ERROR_EMAIL_USED",
+	ErrorUserBanned:              "ErrorUserBanned",
 
 	ErrorInsufficientStock: "ERROR_INSUFFICIENT_STOCK",
 

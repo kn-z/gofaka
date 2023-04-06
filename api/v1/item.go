@@ -6,12 +6,25 @@ import (
 	"gofaka/utils/errmsg"
 	"net/http"
 	"strconv"
+	"strings"
 )
 
 func AddItem(c *gin.Context) {
 	var data model.Item
 	_ = c.ShouldBindJSON(&data)
 	code = model.CreateItem(&data)
+	c.JSON(http.StatusOK, gin.H{
+		"data":    data,
+		"message": errmsg.GetErrMsg(code),
+		"status":  code,
+	})
+}
+
+func BatchAddItem(c *gin.Context) {
+	var data model.Item
+	_ = c.ShouldBindJSON(&data)
+	items := strings.Split(data.Cami, "\n")
+	code := model.BatchCreateItem(data.GoodsId, items)
 	c.JSON(http.StatusOK, gin.H{
 		"data":    data,
 		"message": errmsg.GetErrMsg(code),

@@ -72,3 +72,12 @@ func GetNoticeByID(id int) (Notice, int) {
 	}
 	return notice, errmsg.SUCCESS
 }
+
+func DeleteNotice(id int) int {
+	var notice Notice
+	err = db.Where("id=?", id).Delete(&notice).Error
+	if err != nil {
+		return errmsg.ERROR
+	}
+	return errmsg.SUCCESS
+}

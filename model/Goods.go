@@ -3,6 +3,7 @@ package model
 import (
 	"gofaka/utils/errmsg"
 	"gorm.io/gorm"
+	"log"
 )
 
 type Goods struct {
@@ -13,11 +14,11 @@ type Goods struct {
 	Stock   int    `gorm:"type:integer(6);not null" json:"stock"`
 	Image   string `gorm:"type:varchar(100)" json:"image"`
 	CateId  int    `gorm:"" json:"cateId"`
+	Sort    uint   `gorm:"type:int;autoIncrement" json:"sort"`
 	Status  int    `gorm:"type:int" json:"status"`
 }
 
 func CreateGoods(data *Goods) int {
-	data.Price *= 100
 	err := db.Create(&data).Error
 	if err != nil {
 		return errmsg.ERROR
@@ -29,14 +30,15 @@ func CreateGoods(data *Goods) int {
 //	var Goods []Goods
 //	err := db.Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&Goods).Error
 //	if err != nil && err != gorm.ErrRecordNotFound {
-//		return nil
+//		return nils
 //	}
 //	return Goods
 //}
 
 func GetGoodsList(pageSize int, pageNum int) []Goods {
 	var Goods []Goods
-	err := db.Limit(pageSize).Offset((pageNum-1)*pageSize).Where("status=?", 1).Find(&Goods).Error
+	err := db.Order("sort").Limit(pageSize).Offset((pageNum-1)*pageSize).Joins("left join categories on goods.cate_id = categories.id").Where("goods.status = ? AND categories.status = ?", 1, 1).Find(&Goods).Error
+	//	err := db.Limit(pageSize).Offset((pageNum-1)*pageSize).Where("status=?", 1).Find(&Goods).Error
 	for idx, goods := range Goods {
 		Goods[idx].Stock = CountItemNum(int(goods.ID))
 	}
@@ -52,7 +54,7 @@ func GetAllGoods(pageSize int, pageNum int) interface{} {
 		Name string `gorm:"" json:"name"`
 	}
 	var result []Result
-	err := db.Order("id").Limit(pageSize).Offset((pageNum - 1) * pageSize).Table("goods").Select("goods.id,goods.created_at,goods.title,goods.status,goods.cate_id,goods.price,goods.image,goods.content,categories.name").Joins("left join categories on goods.cate_id = categories.id").Find(&result).Error
+	err := db.Order("sort desc").Limit(pageSize).Offset((pageNum - 1) * pageSize).Table("goods").Select("goods.id,goods.created_at,goods.title,goods.status,goods.cate_id,goods.price,goods.image,goods.content,categories.name").Joins("left join categories on goods.cate_id = categories.id").Find(&result).Error
 	//err := db.Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&Goods).Error
 	for idx, goods := range result {
 		result[idx].Stock = CountItemNum(int(goods.ID))
@@ -114,6 +116,24 @@ func CheckGoodsStock() int {
 		if err != errmsg.SUCCESS {
 			return err
 		}
+	}
+	return errmsg.SUCCESS
+}
+
+func UpdateSort(id int, sort uint) int {
+	var goods Goods
+	var maps = make(map[string]interface{})
+	maps["sort"] = sort
+	err := db.Model(&goods).Where("id=?", id).Updates(maps).Error
+	if err != nil {
+		return errmsg.ERROR
+	}
+	return errmsg.SUCCESS
+}
+
+func SortGoods(orders map[string]int) int {
+	for id, sort := range orders {
+		log.Printf("%s\t%d\n", id, sort)
 	}
 	return errmsg.SUCCESS
 }

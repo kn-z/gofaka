@@ -27,6 +27,11 @@ var (
 	WebUrl     string
 	WebBpColor string
 	AdminPath  string
+
+	AppId        string
+	AliPublicKey string
+	PrivateKey   string
+	NotifyUrl    string
 )
 
 func Init() {
@@ -39,6 +44,7 @@ func Init() {
 	LoadData(cfg)
 	LoadEmail(cfg)
 	LoadWebInfo(cfg)
+	LoadPaymentInfo(cfg)
 }
 
 func LoadServer(cfg *ini.File) {
@@ -68,4 +74,12 @@ func LoadWebInfo(cfg *ini.File) {
 	WebUrl = cfg.Section("web").Key("WebUrl").MustString("www.kncloud.app")
 	WebBpColor = cfg.Section("web").Key("WebBpColor").MustString("#35393e")
 	AdminPath = cfg.Section("web").Key("AdminPath").MustString("backend")
+}
+
+func LoadPaymentInfo(cfg *ini.File) {
+	AppId = cfg.Section("payment").Key("AppId").MustString("2021002161609531")
+	// 支付宝公钥,不是自己生成的
+	AliPublicKey = cfg.Section("payment").Key("AliPublicKey").MustString("w2021002161609531")
+	PrivateKey = cfg.Section("payment").Key("PrivateKey").MustString("2021002161609531")
+	NotifyUrl = cfg.Section("payment").Key("NotifyUrl").MustString("http://fk.kncloud.live:3000/api/v1/notify")
 }

@@ -40,12 +40,16 @@ func GetCategory(pageSize int, pageNum int) []Category {
 	return categories
 }
 
-// edit user
+// edit
 func EditCategory(id int, data *Category) int {
 	var category Category
 	var maps = make(map[string]interface{})
-	maps["name"] = data.Name
-	maps["status"] = data.Status
+	if len(data.Name) == 0 {
+		maps["status"] = data.Status
+	} else {
+		maps["name"] = data.Name
+		maps["status"] = data.Status
+	}
 	err := db.Model(&category).Where("id=?", id).Updates(maps).Error
 	if err != nil {
 		return errmsg.ERROR
@@ -53,7 +57,7 @@ func EditCategory(id int, data *Category) int {
 	return errmsg.SUCCESS
 }
 
-//get category article
+//get category
 
 // delete user
 func DeleteCategory(id int) int {

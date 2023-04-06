@@ -91,10 +91,7 @@ func EditUser(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	_ = c.ShouldBindJSON(&data)
 	data.ID = uint(id)
-	code = model.CheckUser(data)
-	if code != errmsg.ErrorEmailUsed {
-		code = model.EditUser(id, &data)
-	}
+	code = model.EditUser(id, &data)
 	if code == errmsg.ERROR {
 		c.Abort()
 	}
@@ -118,7 +115,7 @@ func SendEmail(c *gin.Context) {
 	var data model.User
 	_ = c.ShouldBindJSON(&data)
 	to := []string{data.Email}
-	SetMail(to)
+	code = SetMail(to)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmsg.GetErrMsg(code),

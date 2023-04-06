@@ -64,3 +64,12 @@ func GetNoticeByID(c *gin.Context) {
 		"status":  code,
 	})
 }
+
+func DeleteNotice(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	code = model.DeleteNotice(id)
+	c.JSON(http.StatusOK, gin.H{
+		"status":  code,
+		"message": errmsg.GetErrMsg(code),
+	})
+}

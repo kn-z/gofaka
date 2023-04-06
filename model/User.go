@@ -12,6 +12,7 @@ type User struct {
 	gorm.Model
 	Email    string `gorm:"type:varchar(64);primaryKey;not null" json:"email"`
 	Password string `gorm:"type:varchar(64);not null" json:"password"`
+	Status   uint   `gorm:"type:tinyint;default:0" json:"status"`
 	Role     int    `gorm:"type:int" json:"role"`
 	Content  string `gorm:"type:text" json:"content"`
 }
@@ -104,6 +105,7 @@ func EditUser(id int, data *User) int {
 	if len(data.Password) != 0 {
 		maps["password"] = ScryptPwd(data.Password)
 	}
+	maps["status"] = data.Status
 	maps["role"] = data.Role
 	maps["content"] = data.Content
 	err := db.Model(&user).Where("id=?", id).Updates(maps).Error
@@ -149,6 +151,9 @@ func CheckLogin(email string, password string) (int, int) {
 	}
 	if user.Password != ScryptPwd(password) {
 		return -1, errmsg.ErrorPasswordWrong
+	}
+	if user.Status == 1 {
+		return -1, errmsg.ErrorUserBanned
 	}
 	return user.Role, errmsg.SUCCESS
 }

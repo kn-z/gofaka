@@ -20,7 +20,7 @@ type VerificationCode struct {
 var ch = make(chan *gomail.Message)
 var UserMap = make(map[string]VerificationCode)
 
-func SetMail(To []string) {
+func SetMail(To []string) int {
 	for _, to := range To {
 		m := gomail.NewMessage()
 		m.SetHeader("From", utils.WebName+"<"+utils.EmUser+">")
@@ -31,10 +31,10 @@ func SetMail(To []string) {
 		m.SetBody("text/html", getBody(UserMap[to].code))
 		ch <- m
 	}
+	return errmsg.SUCCESS
 }
 
 func SendMail() {
-	//m.Attach("/home/Alex/lolcat.jpg")
 	d := gomail.NewDialer(utils.EmHost, utils.EmPort, utils.EmUser, utils.EmPasswd)
 	var s gomail.SendCloser
 	var err error

@@ -22,6 +22,22 @@ func CreateItem(data *Item) int {
 	return errmsg.SUCCESS
 }
 
+func BatchCreateItem(id int, data []string) int {
+	tx := db.Begin()
+	for _, val := range data {
+		if len(val) == 0 {
+			continue
+		}
+		temp := Item{GoodsId: id, Cami: val}
+		err = db.Create(&temp).Error
+		if err != nil {
+			return errmsg.ERROR
+		}
+	}
+	tx.Commit()
+	return errmsg.SUCCESS
+}
+
 func GetAllItem(pageSize int, pageNum int, sortType string, sortKey string) (interface{}, int) {
 	type Result struct {
 		Item
