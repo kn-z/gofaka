@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"github.com/go-redis/redis"
 )
 
 // mail template
@@ -77,14 +79,44 @@ import (
 //
 //}
 
-func main() {
-	var list = []int{1, 2, 3, 4}
-	for _, i := range list {
-		i = 1
-		fmt.Println(i)
-		//fmt.Println(list[idx])
-		//list[idx] = 1
+type Author struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
+}
 
+func main() {
+	fmt.Println("Go Redis Tutorial")
+
+	client := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "",
+		DB:       0,
+	})
+
+	pong, err := client.Ping().Result()
+	fmt.Println(pong, err)
+
+	err = client.Set("name", "Elliot", 0).Err()
+
+	val, err := client.Get("name").Result()
+	if err != nil {
+		fmt.Println(err)
 	}
-	fmt.Println(list)
+	fmt.Println(val)
+
+	json, err := json.Marshal(Author{Name: "Elliot", Age: 25})
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	err = client.Set("id1234", json, 0).Err()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	val, err = client.Get("id1234").Result()
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(val)
 }
