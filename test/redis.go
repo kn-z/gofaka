@@ -86,7 +86,6 @@ type Author struct {
 
 func main() {
 	fmt.Println("Go Redis Tutorial")
-
 	client := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "",
@@ -108,15 +107,17 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+	fmt.Println(string(json[12]))
+	fmt.Println(len(string(json)))
 
-	err = client.Set("id1234", json, 0).Err()
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	val, err = client.Get("id1234").Result()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(val)
+	//	err = client.Set("id1234", json, 0).Err()
+	//	if err != nil {
+	//		fmt.Println(err)
+	//	}
+	//
+	//	val, err = client.Get("id1234").Result()
+	//	if err != nil {
+	//		fmt.Println(err)
+	//	}
+	//	fmt.Println(val)
 }

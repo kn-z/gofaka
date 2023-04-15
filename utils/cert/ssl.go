@@ -11,6 +11,7 @@ import (
 	"github.com/go-acme/lego/v4/lego"
 	"github.com/go-acme/lego/v4/providers/dns/cloudflare"
 	"github.com/go-acme/lego/v4/registration"
+	"gofaka/utils"
 	"log"
 	"os"
 )
@@ -57,10 +58,7 @@ func SaveToFile(domain string, path string, content []byte) {
 }
 
 func main() {
-	domain := "naicha.ktno.cc"
-	authEmail := "zw6979014@gmail.com"
-	authKey := "76501800a930d81b51ea5e554ebb1ce3bcea0"
-
+	utils.Init()
 	// Create a user. New accounts need an email and private key to start.
 	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
 	if err != nil {
@@ -68,7 +66,7 @@ func main() {
 	}
 
 	myUser := MyUser{
-		Email: authEmail,
+		Email: utils.AuthEmail,
 		key:   privateKey,
 	}
 
@@ -87,8 +85,8 @@ func main() {
 	}
 
 	cfConfig := cloudflare.NewDefaultConfig()
-	cfConfig.AuthEmail = authEmail
-	cfConfig.AuthKey = authKey
+	cfConfig.AuthEmail = utils.AuthEmail
+	cfConfig.AuthKey = utils.AuthKey
 
 	// Create Cloudflare DNS Provider client
 	cfClient, err := cloudflare.NewDNSProviderConfig(cfConfig)
@@ -106,7 +104,7 @@ func main() {
 	myUser.Registration = reg
 
 	request := certificate.ObtainRequest{
-		Domains: []string{domain},
+		Domains: []string{utils.Domain},
 		Bundle:  true,
 	}
 	certificates, err := client.Certificate.Obtain(request)
@@ -119,7 +117,7 @@ func main() {
 	//fmt.Printf("%#v\n", certificates)
 	// ... all done.
 	// Save certificate and private key to files
-	SaveToFile(domain, "../cert/certificates/%s.crt", certificates.Certificate)
-	SaveToFile(domain, "../cert/certificates/%s.issuer.crt", certificates.IssuerCertificate)
-	SaveToFile(domain, "../cert/certificates/%s.key", certificates.PrivateKey)
+	SaveToFile(utils.Domain, "../cert/certificates/%s.crt", certificates.Certificate)
+	SaveToFile(utils.Domain, "../cert/certificates/%s.issuer.crt", certificates.IssuerCertificate)
+	SaveToFile(utils.Domain, "../cert/certificates/%s.key", certificates.PrivateKey)
 }
