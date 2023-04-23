@@ -69,7 +69,7 @@ func SendMail() {
 }
 
 func getBody(code string) string {
-	content, err := os.ReadFile("./utils/views/verify.html")
+	content, err := os.ReadFile("../web/src/assets/static/verify.html")
 	if err != nil {
 		log.Println("Failed to read verify.html", err)
 		panic(err)

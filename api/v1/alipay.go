@@ -11,7 +11,7 @@ import (
 func PayTradePreCreate(c *gin.Context, OutTradeNo string, TotalAmount int) (string, int) {
 	client, _ := alipay.NewClient(utils.AppId, utils.PrivateKey, true) //isP is sandbox
 	bm := make(gopay.BodyMap)
-	bm.Set("subject", "宝支付测")
+	bm.Set("subject", "支付宝测试")
 	// out_trade_no is unique, an out_trade_no only be paid once
 	bm.Set("out_trade_no", OutTradeNo)
 	bm.Set("total_amount", float32(TotalAmount)/100)

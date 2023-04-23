@@ -110,7 +110,6 @@ func PayOrder(c *gin.Context) {
 
 // check
 func CallBackOrder(c *gin.Context) {
-
 	notifyReq, code := PayNotifyVerify(c)
 	if code == errmsg.SUCCESS {
 		code = model.CallBackOrder(notifyReq["out_trade_no"].(string))

@@ -4,7 +4,7 @@ const (
 	SUCCESS = 200
 	ERROR   = 500
 
-	//code = 1000... 用户模块错误
+	// code = 1000... 用户模块错误
 	ErrorEmailExist              = 1001
 	ErrorPasswordWrong           = 1002
 	ErrorEmailNotExist           = 1003

@@ -39,7 +39,7 @@ var (
 )
 
 func Init() {
-	cfg, err := ini.Load("./config/config.ini")
+	cfg, err := ini.Load("/root/gofaka/config/config.ini")
 	if err != nil {
 		log.Println("Failed to read config.ini", err)
 		os.Exit(1)
