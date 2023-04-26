@@ -57,6 +57,11 @@ func InitRouter() {
 		admin.POST("notice/add", v1.AddNotice)
 		admin.DELETE("notice/:id", v1.DeleteNotice)
 
+		//payment module routing interface
+		admin.GET("payment/all", v1.GetAllPayment)
+		admin.PUT("payment/:id", v1.EditPayment)
+		admin.POST("payment/add", v1.AddPayment)
+
 		admin.POST("upload", v1.UpLoad)
 		//user.POST("upload", func(c *gin.Context) {
 		//	file, err := c.FormFile("file")
@@ -70,7 +75,6 @@ func InitRouter() {
 	}
 	public := r.Group("api/v1")
 	{
-		public.POST("notify", v1.CallBackOrder)
 		public.POST("verify", v1.SendEmail)
 
 		//user module routing interface
@@ -99,10 +103,14 @@ func InitRouter() {
 		public.GET("notice/:id", v1.GetNoticeByID)
 
 		//category module routing interface
-		public.GET("category", v1.GetCategory)
+		public.GET("category", v1.GetCategoryList)
+
+		//payment module routing interface
+		public.GET("payment/list", v1.GetPaymentList)
+		public.GET("payment/:id", v1.GetPayment)
+		public.POST("payment/notify", v1.CallBackOrder)
 
 		public.POST("pay", v1.PayOrder)
-
 	}
 
 	if err := r.Run(utils.HttpPort); err != nil {

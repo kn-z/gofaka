@@ -36,7 +36,7 @@ func GetCategoryInfo(c *gin.Context) {
 }
 
 // query list
-func GetCategory(c *gin.Context) {
+func GetCategoryList(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pageSize"))
 	pageNum, _ := strconv.Atoi(c.Query("pageNum"))
 

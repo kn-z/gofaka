@@ -36,16 +36,16 @@ func CreateGoods(data *Goods) int {
 //}
 
 func GetGoodsList(pageSize int, pageNum int) []Goods {
-	var Goods []Goods
-	err := db.Order("sort").Limit(pageSize).Offset((pageNum-1)*pageSize).Joins("left join categories on goods.cate_id = categories.id").Where("goods.status = ? AND categories.status = ?", 1, 1).Find(&Goods).Error
+	var goodsList []Goods
+	err := db.Order("sort").Limit(pageSize).Offset((pageNum-1)*pageSize).Joins("left join categories on goods.cate_id = categories.id").Where("goods.status = ? AND categories.status = ?", 1, 1).Find(&goodsList).Error
 	//	err := db.Limit(pageSize).Offset((pageNum-1)*pageSize).Where("status=?", 1).Find(&Goods).Error
-	for idx, goods := range Goods {
-		Goods[idx].Stock = CountItemNum(int(goods.ID))
+	for idx, goods := range goodsList {
+		goodsList[idx].Stock = CountItemNum(int(goods.ID))
 	}
 	if err != nil && err != gorm.ErrRecordNotFound {
 		return nil
 	}
-	return Goods
+	return goodsList
 }
 
 func GetAllGoods(pageSize int, pageNum int) interface{} {
