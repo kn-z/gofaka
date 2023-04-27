@@ -8,7 +8,7 @@ import (
 type Payment struct {
 	gorm.Model
 	Name         string `gorm:"type:varchar(100);not null" json:"name"`
-	Image        string `gorm:"type:varchar(100)" json:"image"`
+	Image        string `gorm:"type:text" json:"image"`
 	Profile      string `gorm:"type:text" json:"profile"`
 	NotifyDomain string `gorm:"type:varchar(200)" json:"notify_domain"`
 	Status       int    `gorm:"type:int(1);not null" json:"status"`

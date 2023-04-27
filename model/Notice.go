@@ -10,7 +10,7 @@ type Notice struct {
 	Title   string `gorm:"type:varchar(20);not null" json:"title"`
 	Content string `gorm:"type:text" json:"content"`
 	Status  int    `gorm:"type:tinyint" json:"status"`
-	Image   string `gorm:"type:varchar(100)" json:"image"`
+	Image   string `gorm:"type:text" json:"image"`
 }
 
 func CreateNotice(data *Notice) int {

@@ -12,7 +12,7 @@ type Goods struct {
 	Price   int    `gorm:"type:integer(11);not null" json:"price"`
 	Content string `gorm:"type:text" json:"content"`
 	Stock   int    `gorm:"type:integer(6);not null" json:"stock"`
-	Image   string `gorm:"type:varchar(100)" json:"image"`
+	Image   string `gorm:"type:text" json:"image"`
 	CateId  int    `gorm:"" json:"cateId"`
 	Sort    uint   `gorm:"type:int;autoIncrement" json:"sort"`
 	Status  int    `gorm:"type:int" json:"status"`
