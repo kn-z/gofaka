@@ -9,7 +9,7 @@ type Payment struct {
 	gorm.Model
 	Name         string `gorm:"type:varchar(100);not null" json:"name"`
 	Image        string `gorm:"type:varchar(100)" json:"image"`
-	Profile      string `gorm:"type:varchar(1000)" json:"profile"`
+	Profile      string `gorm:"type:text" json:"profile"`
 	NotifyDomain string `gorm:"type:varchar(200)" json:"notify_domain"`
 	Status       int    `gorm:"type:int(1);not null" json:"status"`
 	Type         int    `gorm:"type:int(1);not null;comment:'0:alipay 1:wechat pay'" json:"type"`
@@ -53,7 +53,7 @@ func EditPayment(id int, data *Payment) int {
 
 func GetPaymentList(pageSize int, pageNum int) ([]Payment, int) {
 	var payments []Payment
-	err = db.Limit(pageSize).Offset((pageNum-1)*pageSize).Where("payments.status = ?", 1).Find(&payments).Error
+	err = db.Limit(pageSize).Offset((pageNum-1)*pageSize).Select("payments.id, payments.name, payments.image").Where("payments.status = ?", 1).Find(&payments).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
 		return payments, errmsg.ERROR
 	}

@@ -1,6 +1,7 @@
 package model
 
 import (
+	"database/sql"
 	"gofaka/utils/errmsg"
 	"gorm.io/gorm"
 	"time"
@@ -12,6 +13,7 @@ type Order struct {
 	Email        string `gorm:"type:varchar(64);not null" json:"email"`
 	SearchPasswd string `gorm:"type:varchar(64)" json:"searchPasswd"`
 	GoodsId      int    `gorm:"" json:"goodsId"`
+	PaymentID    int    `gorm:"" json:"paymentId"`
 	BuyAmount    int    `gorm:"type:integer(11);not null" json:"buyAmount"`
 	OutTradeNo   string `gorm:"type:varchar(20);not null" json:"outTradeNo"`
 	CallbackNo   string `gorm:"type:varchar(20)" json:"callbackNo"`
@@ -194,4 +196,41 @@ func CancelExpiredOrder() {
 	for _, order := range orders {
 		_ = CancelOrder(&order)
 	}
+}
+
+func GetTodayOrder() (float64, int64) {
+	var totalAmount sql.NullFloat64
+	var count int64
+	today := time.Now().Format("2006-01-02")
+	err := db.Model(&Order{}).Select("SUM(total_amount) as total_amount").Where("status=? AND DATE(created_at) = ?", 1, today).Count(&count).Find(&totalAmount).Error
+	if err != nil || !totalAmount.Valid {
+		return 0.0, 0
+	}
+	return totalAmount.Float64, count
+}
+
+func GetMonthOrder() (float64, int64) {
+	now := time.Now().Local()
+	var count int64
+	startOfMonth := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, now.Location())
+	endOfMonth := startOfMonth.AddDate(0, 1, -1).Add(time.Hour * 23).Add(time.Minute * 59).Add(time.Second * 59)
+	var totalAmount sql.NullFloat64
+	err := db.Model(&Order{}).Select("SUM(total_amount) as total_amount").Where("created_at >= ? AND created_at <= ? AND status = ?", startOfMonth.Format("2006-01-02"), endOfMonth.Format("2006-01-02"), 1).Count(&count).Find(&totalAmount).Error
+	if err != nil || !totalAmount.Valid {
+		return 0.0, 0
+	}
+	return totalAmount.Float64, count
+}
+
+func GetLastMonthOrder() (float64, int64) {
+	now := time.Now().Local()
+	startOfMonth := time.Date(now.Year(), now.Month()-1, 1, 0, 0, 0, 0, now.Location())
+	endOfMonth := startOfMonth.AddDate(0, 1, -1).Add(time.Hour * 23).Add(time.Minute * 59).Add(time.Second * 59)
+	var totalAmount sql.NullFloat64
+	var count int64
+	err := db.Model(&Order{}).Select("SUM(total_amount) as total_amount").Where("created_at >= ? AND created_at <= ? AND status = ?", startOfMonth.Format("2006-01-02"), endOfMonth.Format("2006-01-02"), 1).Count(&count).Find(&totalAmount).Error
+	if err != nil || !totalAmount.Valid {
+		return 0.0, 0
+	}
+	return totalAmount.Float64, count
 }

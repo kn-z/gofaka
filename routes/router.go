@@ -62,6 +62,9 @@ func InitRouter() {
 		admin.PUT("payment/:id", v1.EditPayment)
 		admin.POST("payment/add", v1.AddPayment)
 
+		//statistic module routing interface
+		admin.GET("statistic/override", v1.GetOverride)
+
 		admin.POST("upload", v1.UpLoad)
 		//user.POST("upload", func(c *gin.Context) {
 		//	file, err := c.FormFile("file")
