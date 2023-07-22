@@ -36,6 +36,11 @@ const (
 
 	//code = 5000
 	ErrorNoticeNotExist = 5001
+
+	//code = 6000
+	ErrorKeyIDEmpty     = 6001
+	ErrorKeySecretEmpty = 6002
+	ErrorEmailEmpty     = 6003
 )
 
 var codeMsg = map[int]string{
@@ -65,7 +70,8 @@ var codeMsg = map[int]string{
 	ErrorInvalidQuantity: "ERROR_INVALID_QUANTITY",
 	ErrorInvalidEmail:    "ERROR_INVALID_EMAIL",
 
-	ErrorCateNameExist:  "ERROR_CATE_NAME_EXIST",
+	ErrorCateNameExist: "ERROR_CATE_NAME_EXIST",
+
 	ErrorNoticeNotExist: "ERROR_NOTICE_NOT_EXIST",
 }
 

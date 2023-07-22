@@ -23,7 +23,6 @@ func InitDb() {
 	//fmt.Println(dsn)
 	//dsn = "kitnoob:ZAd3F8FC7YKCSiZ7@tcp(127.0.0.1:3306)/gofaka?charset=utf8&parseTime=True&loc=Local"
 	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	fmt.Println("test")
 	if err != nil {
 		log.Printf("Failed to connected database %s", err)
 	}

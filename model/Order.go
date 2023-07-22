@@ -44,7 +44,7 @@ func CreateOrder(order *Order) int {
 	order.TotalAmount = goods.Price * order.BuyAmount
 	order.Status = 0
 	err := db.Create(&order).Error
-	if err != nil {
+	if err != nil || goods.Status == 0 {
 		return errmsg.ERROR
 	}
 	errCode = LockItems2Order(order)

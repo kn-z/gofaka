@@ -18,10 +18,11 @@ var (
 	DbPasswd string
 	DbName   string
 
-	EmHost   string
-	EmPort   int
-	EmUser   string
-	EmPasswd string
+	EmHost         string
+	EmPort         int
+	EmUser         string
+	EmPasswd       string
+	EmTemplatePath string
 
 	WebName    string
 	WebUrl     string
@@ -72,6 +73,7 @@ func LoadEmail(cfg *ini.File) {
 	EmPort = cfg.Section("email").Key("EmPort").MustInt(587)
 	EmUser = cfg.Section("email").Key("EmUser").MustString("emuser")
 	EmPasswd = cfg.Section("email").Key("EmPasswd").MustString("empasswd")
+	EmTemplatePath = cfg.Section("email").Key("EmTemplatePath").MustString("../web/src/assets/static/")
 }
 
 func LoadWebInfo(cfg *ini.File) {
